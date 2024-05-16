@@ -13,6 +13,7 @@ import fr.diginamic.recensement.services.RechercheVillesPlusPeupleesDepartement;
 import fr.diginamic.recensement.services.RechercheVillesPlusPeupleesFrance;
 import fr.diginamic.recensement.services.RechercheVillesPlusPeupleesRegion;
 import fr.diginamic.recensement.utils.RecensementUtils;
+import fr.diginamic.recensement.utils.SaisieException;
 
 /**
  * Application de traitement des données de recensement de population
@@ -66,7 +67,12 @@ public class Application {
 				break;
 			case 4:
 				RecherchePopulationBorneService recherchePopBorne = new RecherchePopulationBorneService();
+				try {
 				recherchePopBorne.traiter(recensement, scanner);
+				}
+				catch (SaisieException e){
+					System.out.println(e.getMessage());
+				}
 				break;
 			case 5:
 				RechercheVillesPlusPeupleesDepartement rechercheVillesPlusPeupleesDepartement = new RechercheVillesPlusPeupleesDepartement();
@@ -99,7 +105,7 @@ public class Application {
 	/**
 	 * Affichage du menu
 	 */
-	public static void afficherMenu() {
+	static void afficherMenu() {
 		System.out.println("***** Recensement population *****");
 		System.out.println("1. Rechercher la population d'une ville");
 		System.out.println("2. Rechercher la population d'un département");
