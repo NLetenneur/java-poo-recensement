@@ -99,7 +99,7 @@ public class Application {
 	/**
 	 * Affichage du menu
 	 */
-	private static void afficherMenu() {
+	public static void afficherMenu() {
 		System.out.println("***** Recensement population *****");
 		System.out.println("1. Rechercher la population d'une ville");
 		System.out.println("2. Rechercher la population d'un département");

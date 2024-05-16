@@ -24,13 +24,23 @@ public class RecherchePopulationBorneService extends MenuService {
 
 		System.out.println("Choississez une population minimum (en milliers d'habitants): ");
 		String saisieMin = scanner.nextLine();
-		
+
 		System.out.println("Choississez une population maximum (en milliers d'habitants): ");
 		String saisieMax = scanner.nextLine();
 
-		int min = Integer.parseInt(saisieMin) * 1000;
-		int max = Integer.parseInt(saisieMax) * 1000;
-		
+		int min = 0;
+		try {
+			min = Integer.parseInt(saisieMin) * 1000;
+		} catch (Exception e) {
+			System.out.println("Vous devez saisir un chiffre comme population minimale");
+		}
+		int max = 100000;
+		try {
+			max = Integer.parseInt(saisieMax) * 1000;
+		} catch (Exception e) {
+			System.out.println("Vous devez saisir un chiffre comme population maximale");
+		}
+
 		List<Ville> villes = rec.getVilles();
 		for (Ville ville : villes) {
 			if (ville.getCodeDepartement().equalsIgnoreCase(choix)) {
